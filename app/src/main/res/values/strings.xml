@@ -19,10 +19,6 @@
     <string name="password">Password</string>
     <string name="line">line</string>
     <string name="or">or</string>
-    <string name="log_in">Log in</string>
-    <string name="e_mail">E-mail</string>
-    <string name="log_in">Log in</string>
-    <string name="password">Password</string>
     <string name="welcome_to">Welcome to</string>
     <string name="neighbourlyy">Neighbourlyy</string>
     <string name="log_out">Log out</string>
@@ -30,5 +26,4 @@
     <string name="how_to_start">How to start</string>
     <string name="help_others">Help Others</string>
     <string name="your_pets">Your Pets</string>
-    <string name="neighbourlyy">Neighbourlyy</string>
 </resources>

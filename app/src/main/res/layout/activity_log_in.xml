@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/LogInBtn2"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:text="@string/log_in"
