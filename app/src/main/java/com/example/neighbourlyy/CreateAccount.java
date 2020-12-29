@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.util.regex.Pattern;
 
@@ -39,6 +41,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         mAuth = FirebaseAuth.getInstance();
+
         EditText emailText = findViewById(R.id.editTextTextEmailAddress);
         emailText.addTextChangedListener(new TextValidator(emailText) {
             @Override
@@ -59,17 +62,19 @@ public class CreateAccount extends AppCompatActivity {
                 if (text.isEmpty()) {
                     textView.setError("Field cannot be empty!");
                 }
-                else if (!validatePassword(text)) {
+                else if (!PASSWORD_PATTERN.matcher(text).matches()) {
                     textView.setError("Invalid password!");
                 }
             }
         });
 
+        EditText nameText = findViewById(R.id.editTextTextPersonName);
+
         Button signInBtn = findViewById(R.id.signInBtn);
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount(emailText.getText().toString(), passwordText.getText().toString());
+                createAccount(emailText.getText().toString(), passwordText.getText().toString(), nameText.getText().toString());
             }
         });
 
@@ -81,18 +86,41 @@ public class CreateAccount extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
-    public void createAccount(String email, String password) {
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches() & validatePassword(password)) {
+    public void createAccount(String email, String password, String name) {
+        boolean emailSent = false;
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches() & PASSWORD_PATTERN.matcher(password).matches()) {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-                        Intent i = new Intent(CreateAccount.this, MainMenu.class);
-                        startActivity(i);
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(name)
+                                            .build();
+                                    FirebaseUser newUser = FirebaseAuth.getInstance().getCurrentUser();
+                                    newUser.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                    }
+                                                }
+                                            });
+                                    Intent i = new Intent(CreateAccount.this, MainMenu.class);
+                                    startActivity(i);
+                                }
+                                else {
+                                    Toast.makeText(CreateAccount.this, "Sending email failed.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(CreateAccount.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -104,11 +132,7 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(this, "Some field are incorrect!", Toast.LENGTH_SHORT).show();
         }
         /* TODO
-        Dodać wysłanie maila aktywacyjnego
+            Dodać wysłanie maila aktywacyjnego
          */
-    }
-
-    private boolean validatePassword(String password) {
-        return PASSWORD_PATTERN.matcher(password).matches();
     }
 }
