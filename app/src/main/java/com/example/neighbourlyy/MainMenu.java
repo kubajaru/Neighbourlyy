@@ -35,5 +35,14 @@ public class MainMenu extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button mapBtn = findViewById(R.id.mapBtn);
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenu.this, Map.class);
+                startActivity(i);
+            }
+        });
     }
 }

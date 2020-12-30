@@ -26,4 +26,6 @@
     <string name="how_to_start">How to start</string>
     <string name="help_others">Help Others</string>
     <string name="your_pets">Your Pets</string>
+    <string name="denyBtn">Deny permission</string>
+    <string name="grantBtn">Grant permission</string>
 </resources>

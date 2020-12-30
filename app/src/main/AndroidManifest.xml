@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.neighbourlyy">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Neighbourlyy">
-        <activity android:name=".AddPet"></activity>
+        <activity android:name=".EducationalUI"></activity>
+        <activity android:name=".Map" />
+        <activity android:name=".AddPet" />
         <activity android:name=".MainMenu" />
         <activity android:name=".LogIn" />
         <activity android:name=".CreateAccount" />

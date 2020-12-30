@@ -49,7 +49,7 @@
         app:rippleColor="#009688" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/mapBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/help_others"

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.neighbourlyy"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -42,4 +42,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'androidx.activity:activity:1.2.0-rc01'
 }

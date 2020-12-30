@@ -32,7 +32,6 @@ public class CreateAccount extends AppCompatActivity {
                     ".{8,20}" +               //at least 8 characters
                     "$");
 
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -96,23 +95,23 @@ public class CreateAccount extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(name)
+                                .build();
+                        FirebaseUser newUser = FirebaseAuth.getInstance().getCurrentUser();
+                        newUser.updateProfile(profileUpdates)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                        }
+                                    }
+                                });
+                        newUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(name)
-                                            .build();
-                                    FirebaseUser newUser = FirebaseAuth.getInstance().getCurrentUser();
-                                    newUser.updateProfile(profileUpdates)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                    }
-                                                }
-                                            });
+
                                     Intent i = new Intent(CreateAccount.this, MainMenu.class);
                                     startActivity(i);
                                 }
