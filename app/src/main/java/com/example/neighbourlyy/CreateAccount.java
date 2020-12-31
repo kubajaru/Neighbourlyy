@@ -29,7 +29,7 @@ public class CreateAccount extends AppCompatActivity {
                     "(?=.*[A-Z])" +         //at least 1 upper case letter
                     "(?=.*[@#$%^&+=])" +    //at least 1 special character
                     "(?=\\S+$)" +           //no white spaces
-                    ".{8,20}" +               //at least 8 characters
+                    ".{8,20}" +             //at least 8 characters
                     "$");
 
     private FirebaseAuth mAuth;
@@ -46,10 +46,10 @@ public class CreateAccount extends AppCompatActivity {
             @Override
             public void validate(TextView textView, String text) {
                 if (text.isEmpty()) {
-                    textView.setError("Field cannot be empty!");
+                    textView.setError(getString(R.string.noEmptyString));
                 }
                 else if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-                    textView.setError("Invalid email address!");
+                    textView.setError(getString(R.string.invalidEmail));
                 }
             }
         });
@@ -59,10 +59,10 @@ public class CreateAccount extends AppCompatActivity {
             @Override
             public void validate(TextView textView, String text) {
                 if (text.isEmpty()) {
-                    textView.setError("Field cannot be empty!");
+                    textView.setError(getString(R.string.noEmptyField));
                 }
                 else if (!PASSWORD_PATTERN.matcher(text).matches()) {
-                    textView.setError("Invalid password!");
+                    textView.setError(getString(R.string.invalidPassword));
                 }
             }
         });
@@ -88,7 +88,6 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public void createAccount(String email, String password, String name) {
-        boolean emailSent = false;
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches() & PASSWORD_PATTERN.matcher(password).matches()) {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override

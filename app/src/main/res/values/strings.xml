@@ -28,4 +28,8 @@
     <string name="your_pets">Your Pets</string>
     <string name="denyBtn">Deny permission</string>
     <string name="grantBtn">Grant permission</string>
+    <string name="noEmptyString">Field cannot be empty!</string>
+    <string name="invalidEmail">Invalid email address!</string>
+    <string name="noEmptyField">Field cannot be empty!</string>
+    <string name="invalidPassword">Invalid password!</string>
 </resources>
