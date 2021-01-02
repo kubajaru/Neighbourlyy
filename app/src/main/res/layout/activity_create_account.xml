@@ -15,7 +15,7 @@
         android:ems="10"
         android:hint="@string/street"
         android:inputType="textPostalAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/signInBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityTV"
@@ -30,11 +30,9 @@
         android:ems="10"
         android:hint="@string/city"
         android:inputType="textPostalAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PostalCodeTV"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/PostalCodeTV" />
 
     <Button
         android:id="@+id/loginBtn"
