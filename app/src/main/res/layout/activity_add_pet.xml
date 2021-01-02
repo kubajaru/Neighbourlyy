@@ -7,7 +7,7 @@
     tools:context=".AddPet">
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/SaveBtn"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:text="@string/save"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.948" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/PetNameTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.341" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/DetailsTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.83" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/BreedTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -84,11 +84,11 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
+        app:layout_constraintVertical_bias="0.128"
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/WeightTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -103,13 +103,13 @@
         app:layout_constraintVertical_bias="0.53" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/fromTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/available_from"
-        android:inputType="date"
+        android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -118,13 +118,13 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <EditText
-        android:id="@+id/editTextDate3"
+        android:id="@+id/ToTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/available_to"
-        android:inputType="date"
+        android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

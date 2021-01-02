@@ -63,7 +63,7 @@
         app:rippleColor="#009688" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/PetBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/your_pets"

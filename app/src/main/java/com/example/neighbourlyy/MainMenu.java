@@ -44,5 +44,14 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button petBtn = findViewById(R.id.PetBtn);
+        petBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainMenu.this, PetsList.class);
+                startActivity(i);
+            }
+        });
     }
 }

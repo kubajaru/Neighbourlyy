@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -18,7 +20,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class CreateAccount extends AppCompatActivity {
@@ -32,7 +38,10 @@ public class CreateAccount extends AppCompatActivity {
                     ".{8,20}" +             //at least 8 characters
                     "$");
 
+    private static final Pattern POSTAL_CODE_PATTERN = Pattern.compile("^\\d{2}[- ]{0,1}\\d{3}$");
+
     private FirebaseAuth mAuth;
+    Geocoder coder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +49,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         mAuth = FirebaseAuth.getInstance();
-
+        coder = new Geocoder(this);
         EditText emailText = findViewById(R.id.editTextTextEmailAddress);
         emailText.addTextChangedListener(new TextValidator(emailText) {
             @Override
@@ -68,12 +77,62 @@ public class CreateAccount extends AppCompatActivity {
         });
 
         EditText nameText = findViewById(R.id.editTextTextPersonName);
+        nameText.addTextChangedListener(new TextValidator(nameText) {
+            @Override
+            public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError(getString(R.string.noEmptyField));
+                }
+            }
+        });
+
+        EditText phoneNumberText = findViewById(R.id.editTextPhone);
+        phoneNumberText.addTextChangedListener(new TextValidator(phoneNumberText) {
+            @Override
+            public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError(getString(R.string.noEmptyField));
+                }
+            }
+        });
+
+        EditText postalCodeText = findViewById(R.id.PostalCodeTV);
+        postalCodeText.addTextChangedListener(new TextValidator(postalCodeText) {
+            @Override
+            public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError(getString(R.string.noEmptyField));
+                } else if (!POSTAL_CODE_PATTERN.matcher(text).matches()) {
+                    textView.setError("Invalid postal code");
+                }
+            }
+        });
+
+        EditText cityText = findViewById(R.id.CityTV);
+        cityText.addTextChangedListener(new TextValidator(cityText) {
+            @Override
+            public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError(getString(R.string.noEmptyField));
+                }
+            }
+        });
+
+        EditText streetAndNumber = findViewById(R.id.StreetNumberTV);
+        streetAndNumber.addTextChangedListener(new TextValidator(streetAndNumber) {
+            @Override
+            public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError(getString(R.string.noEmptyField));
+                }
+            }
+        });
 
         Button signInBtn = findViewById(R.id.signInBtn);
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount(emailText.getText().toString(), passwordText.getText().toString(), nameText.getText().toString());
+                createAccount(emailText.getText().toString(), passwordText.getText().toString(), nameText.getText().toString(), phoneNumberText.getText().toString(), createAddressString(postalCodeText.getText().toString(), cityText.getText().toString(), streetAndNumber.getText().toString()));
             }
         });
 
@@ -87,7 +146,7 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
-    public void createAccount(String email, String password, String name) {
+    public void createAccount(String email, String password, String name, String phoneNumber, String address) {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches() & PASSWORD_PATTERN.matcher(password).matches()) {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -110,7 +169,23 @@ public class CreateAccount extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference myRef = database.getReference("users");
+                                    myRef.child(newUser.getUid()).child("Name").setValue(newUser.getDisplayName());
+                                    myRef.child(newUser.getUid()).child("Phone number").setValue(phoneNumber);
+                                    myRef.child(newUser.getUid()).child("Address").setValue(address);
+                                    try {
+                                        List<Address> addressList = coder.getFromLocationName(address, 2);
+                                        if (addressList != null) {
+                                            myRef.child(newUser.getUid()).child("Longitude").setValue(addressList.get(0).getLongitude());
+                                            myRef.child(newUser.getUid()).child("Latitude").setValue(addressList.get(0).getLatitude());
+                                        } else {
+                                            Toast.makeText(CreateAccount.this, "Address verification failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                    catch (IOException ex){
+                                        Toast.makeText(CreateAccount.this, "Error occured", Toast.LENGTH_SHORT).show();
+                                    }
                                     Intent i = new Intent(CreateAccount.this, MainMenu.class);
                                     startActivity(i);
                                 }
@@ -129,8 +204,9 @@ public class CreateAccount extends AppCompatActivity {
         else {
             Toast.makeText(this, "Some field are incorrect!", Toast.LENGTH_SHORT).show();
         }
-        /* TODO
-            Dodać wysłanie maila aktywacyjnego
-         */
+    }
+
+    public String createAddressString(String postalCode, String city, String streetAndNumber) {
+        return "" + streetAndNumber + ", " + postalCode + " " + city;
     }
 }

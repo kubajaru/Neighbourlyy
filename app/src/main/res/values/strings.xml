@@ -15,7 +15,9 @@
     <string name="full_name">Full Name</string>
     <string name="e_mail">E-mail</string>
     <string name="phone_number">Phone Number</string>
-    <string name="address">Address</string>
+    <string name="street">Street and number</string>
+    <string name="city">City</string>
+    <string name="postalCode">Postal Code</string>
     <string name="password">Password</string>
     <string name="line">line</string>
     <string name="or">or</string>

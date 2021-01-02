@@ -3,6 +3,7 @@
     package="com.example.neighbourlyy">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Neighbourlyy">
-        <activity android:name=".EducationalUI"></activity>
+        <activity android:name=".PetsList"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCw75uAwlIvmdtHv9TBvDTFzCE3twshorQ" />
+
+        <activity android:name=".EducationalUI" />
         <activity android:name=".Map" />
         <activity android:name=".AddPet" />
         <activity android:name=".MainMenu" />
