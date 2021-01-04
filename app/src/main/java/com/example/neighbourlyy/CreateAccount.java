@@ -220,4 +220,8 @@ public class CreateAccount extends AppCompatActivity {
     public String createAddressString(String postalCode, String city, String streetAndNumber) {
         return "" + streetAndNumber + ", " + postalCode + " " + city;
     }
+    /* TODO
+        Fixing all strings.
+        Check if we have every scenario handled.
+     */
 }

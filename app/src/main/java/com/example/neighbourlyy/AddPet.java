@@ -120,5 +120,10 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
+        /* TODO
+            Add update functionality.
+            Add remove functionality.
+         */
+
     }
 }

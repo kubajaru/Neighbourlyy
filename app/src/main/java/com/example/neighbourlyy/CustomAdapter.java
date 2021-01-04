@@ -37,4 +37,8 @@ public class CustomAdapter extends ArrayAdapter<Pet> {
 
         return listItem;
     }
+
+    /* TODO
+        None.
+     */
 }

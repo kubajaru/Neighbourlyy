@@ -107,7 +107,12 @@ public class Map extends AppCompatActivity {
                 }
                 return;
         }
-        // Other 'case' lines to check for other
-        // permissions this app might request.
+
+        /* TODO
+            Check permissions
+            Add getting location of current user.
+            Add calculating distance.
+            Add selecting only pets in range.
+         */
     }
 }
