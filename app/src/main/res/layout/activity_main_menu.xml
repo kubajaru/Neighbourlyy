@@ -17,49 +17,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872"
+        app:layout_constraintVertical_bias="0.859"
         app:rippleColor="#009688" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/settings"
         android:textColorHighlight="@color/black"
         app:iconTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintVertical_bias="0.0"
         app:rippleColor="#009688" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/how_to_start"
         android:textColorHighlight="@color/black"
         app:iconTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546"
+        app:layout_constraintTop_toBottomOf="@+id/mapBtn"
+        app:layout_constraintVertical_bias="0.0"
         app:rippleColor="#009688" />
 
     <Button
         android:id="@+id/mapBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/help_others"
         android:textColorHighlight="@color/black"
         app:iconTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462"
+        app:layout_constraintTop_toBottomOf="@+id/PetBtn"
+        app:layout_constraintVertical_bias="0.0"
         app:rippleColor="#009688" />
 
     <Button
@@ -80,23 +86,24 @@
         android:id="@+id/HeaderTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="@string/neighbourlyy"
+        android:textColor="#FFFFFF"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintVertical_bias="0.226" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="122dp"
-        android:layout_height="126dp"
+        android:layout_width="107dp"
+        android:layout_height="121dp"
         android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026"
