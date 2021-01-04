@@ -33,6 +33,13 @@
     <string name="noEmptyString">Field cannot be empty!</string>
     <string name="invalidEmail">Invalid email address!</string>
     <string name="noEmptyField">Field cannot be empty!</string>
-    <string name="invalidPassword">Invalid password!</string>
+    <string name="invalidPassword">Invalid password! Password should contain 1 upper case letter, 1 lower case letter, special character(@#$%^+=) and 1 number.</string>
     <string name="helpBtn">Contact and help</string>
+    <string name="toast">Provide all the information.</string>
+    <string name="backButtonDescription">Back button</string>
+    <string name="smsContent">Hello, %1$s my name is %2$s. I found you on Neighboutlyy and would like to help with your pet.</string>
+    <string name="invalidPostalCode">Invalid postal code. Use polish one, for example (00-000)</string>
+    <string name="coderFail">Unexpected error occured. Please relaunch your app.</string>
+    <string name="addressCodingFailed">Address is incorrect. Please check it and try one more time.</string>
+    <string name="sendingEmailFailed">Your email does not exist. Please check it and try again.</string>
 </resources>

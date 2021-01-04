@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -28,12 +29,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class CreateAccount extends AppCompatActivity {
+    private static final String TAG = "CreateAccountActivity";
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         //at least 1 digit
                     "(?=.*[a-z])" +         //at least 1 lower case letter
                     "(?=.*[A-Z])" +         //at least 1 upper case letter
-                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                    "(?=.*[@#$%^+=])" +    //at least 1 special character
                     "(?=\\S+$)" +           //no white spaces
                     ".{8,20}" +             //at least 8 characters
                     "$");
@@ -103,7 +105,7 @@ public class CreateAccount extends AppCompatActivity {
                 if (text.isEmpty()) {
                     textView.setError(getString(R.string.noEmptyField));
                 } else if (!POSTAL_CODE_PATTERN.matcher(text).matches()) {
-                    textView.setError("Invalid postal code");
+                    textView.setError(getString(R.string.invalidPostalCode));
                 }
             }
         });
@@ -162,6 +164,10 @@ public class CreateAccount extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
+                                            Log.i(TAG, "Users display name updated correctly.");
+                                        }
+                                        else {
+                                            Log.e(TAG, "Updating user display name failed");
                                         }
                                     }
                                 });
@@ -180,24 +186,28 @@ public class CreateAccount extends AppCompatActivity {
                                             myRef.child(newUser.getUid()).child("Longitude").setValue(addressList.get(0).getLongitude());
                                             myRef.child(newUser.getUid()).child("Latitude").setValue(addressList.get(0).getLatitude());
                                         } else {
-                                            Toast.makeText(CreateAccount.this, "Address verification failed", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(CreateAccount.this, getString(R.string.addressCodingFailed), Toast.LENGTH_SHORT).show();
+                                            Log.e(TAG, "Address not found. List of addresses is null");
                                         }
                                     }
                                     catch (IOException ex){
-                                        Toast.makeText(CreateAccount.this, "Error occured", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(CreateAccount.this, getString(R.string.coderFail), Toast.LENGTH_SHORT).show();
+                                        Log.e(TAG, "Unexpected error occured during coding address into coordinates.", ex);
                                     }
                                     Intent i = new Intent(CreateAccount.this, MainMenu.class);
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);
                                 }
                                 else {
-                                    Toast.makeText(CreateAccount.this, "Sending email failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CreateAccount.this, getString(R.string.sendingEmailFailed), Toast.LENGTH_SHORT).show();
+                                    Log.e(TAG, "Sending email to new user failed");
                                 }
                             }
                         });
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(CreateAccount.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "createUserWithPasswordAndEmail failed.");
                     }
                 }
             });

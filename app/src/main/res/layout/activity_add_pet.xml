@@ -7,7 +7,7 @@
     tools:context=".AddPet">
 
     <Button
-        android:id="@+id/SaveBtn"
+        android:id="@+id/addPet_saveBtn"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:text="@string/save"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.948" />
 
     <EditText
-        android:id="@+id/PetNameTV"
+        android:id="@+id/addPet_nameTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.341" />
 
     <EditText
-        android:id="@+id/PetDetailsTV"
+        android:id="@+id/addPet_detailsTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.83" />
 
     <EditText
-        android:id="@+id/PetBreedTV"
+        android:id="@+id/addPet_breedTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -62,20 +62,7 @@
         app:layout_constraintVertical_bias="0.441" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/backarrow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/backward_arrow" />
-
-    <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/logo"
         android:layout_width="122dp"
         android:layout_height="126dp"
         android:contentDescription="@string/logo"
@@ -88,7 +75,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/PetWeightTV"
+        android:id="@+id/addPet_weightTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -103,7 +90,7 @@
         app:layout_constraintVertical_bias="0.53" />
 
     <EditText
-        android:id="@+id/fromTV"
+        android:id="@+id/addPet_fromTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -118,7 +105,7 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <EditText
-        android:id="@+id/ToTV"
+        android:id="@+id/addPet_toTV"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -130,5 +117,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.733" />
+
+    <ImageButton
+        android:id="@+id/addPet_backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/backButtonDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028"
+        app:srcCompat="@drawable/backward_arrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

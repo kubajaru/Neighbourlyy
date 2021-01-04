@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Contact extends AppCompatActivity {
+    private static final String TAG = "ContactActivity";
     private String phoneNumber;
     private String fullName;
 
@@ -48,11 +50,11 @@ public class Contact extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 phoneNumber = snapshot.getValue(String.class);
-                System.out.println(phoneNumber);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "Data read of phone number cancelled: " + error);
 
             }
         });
@@ -62,12 +64,11 @@ public class Contact extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fullName = snapshot.getValue(String.class);
-                System.out.println(fullName);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e(TAG, "Data read of full name cancelled: " + error);
             }
         });
 
@@ -79,11 +80,11 @@ public class Contact extends AppCompatActivity {
                 if (!phoneNumber.isEmpty()) {
                 Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
                 smsIntent.setData(Uri.parse("smsto:" + phoneNumber));
-                smsIntent.putExtra("sms_body", "Hello " + fullName + ", my name is " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + ". I found you on Neighbourlyy and would like to help you with your pet.");
+                smsIntent.putExtra("sms_body", String.format(getString(R.string.smsContent), fullName, FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
                 if (smsIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(smsIntent);
                 } else {
-                    System.out.println("Not working");
+                    Log.e(TAG, "SMS activity not opened.");
                 }
             }
             }

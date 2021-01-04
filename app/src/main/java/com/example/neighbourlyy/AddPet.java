@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,13 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class AddPet extends AppCompatActivity {
+    private static final String TAG = "AddPetActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
 
-        EditText petNameText = findViewById(R.id.PetNameTV);
+        EditText petNameText = findViewById(R.id.addPet_nameTV);
         petNameText.addTextChangedListener(new TextValidator(petNameText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -33,7 +36,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText breedText = findViewById(R.id.PetBreedTV);
+        EditText breedText = findViewById(R.id.addPet_breedTV);
         breedText.addTextChangedListener(new TextValidator(breedText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -43,7 +46,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText weightText = findViewById(R.id.PetWeightTV);
+        EditText weightText = findViewById(R.id.addPet_weightTV);
         weightText.addTextChangedListener(new TextValidator(weightText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -53,7 +56,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText FromText = findViewById(R.id.fromTV);
+        EditText FromText = findViewById(R.id.addPet_fromTV);
         FromText.addTextChangedListener(new TextValidator(FromText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -63,7 +66,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText toText = findViewById(R.id.ToTV);
+        EditText toText = findViewById(R.id.addPet_toTV);
         toText.addTextChangedListener(new TextValidator(toText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -73,7 +76,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText detailsText = findViewById(R.id.PetDetailsTV);
+        EditText detailsText = findViewById(R.id.addPet_detailsTV);
         detailsText.addTextChangedListener(new TextValidator(detailsText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -83,7 +86,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        Button saveBtn = findViewById(R.id.SaveBtn);
+        Button saveBtn = findViewById(R.id.addPet_saveBtn);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,9 +104,21 @@ public class AddPet extends AppCompatActivity {
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                 } else {
-                    Toast.makeText(AddPet.this, "Provide all the information.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPet.this, R.string.toast, Toast.LENGTH_SHORT).show();
+                    Log.w(TAG, "User provided incorrect data");
                 }
             }
         });
+
+        ImageButton backBtn = findViewById(R.id.addPet_backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AddPet.this, PetsList.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+
     }
 }
