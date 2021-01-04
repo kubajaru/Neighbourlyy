@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -86,17 +87,24 @@ public class AddPet extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("pets");
-                HashMap<String, String> newPet = new HashMap<>();
-                newPet.put("name", petNameText.getText().toString());
-                newPet.put("breed", breedText.getText().toString());
-                newPet.put("weight", weightText.getText().toString());
-                newPet.put("details", detailsText.getText().toString());
-                newPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                myRef.push().setValue(newPet);
-                Intent i = new Intent(AddPet.this, PetsList.class);
-                startActivity(i);
+                if (!petNameText.getText().toString().isEmpty() | !breedText.getText().toString().isEmpty() | !weightText.getText().toString().isEmpty() | !detailsText.getText().toString().isEmpty()) {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("pets");
+                    HashMap<String, String> newPet = new HashMap<>();
+                    newPet.put("name", petNameText.getText().toString());
+                    newPet.put("breed", breedText.getText().toString());
+                    newPet.put("weight", weightText.getText().toString());
+                    newPet.put("details", detailsText.getText().toString());
+                    String id = myRef.push().getKey();
+                    DatabaseReference newPetRecord = database.getReference("pets/" + id);
+                    newPetRecord.setValue(newPet);
+                    DatabaseReference user = database.getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pets");
+                    user.child(id).setValue(true);
+                    Intent i = new Intent(AddPet.this, PetsList.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(AddPet.this, "Provide all the information.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
