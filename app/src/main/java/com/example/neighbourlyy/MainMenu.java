@@ -54,4 +54,9 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
+
+    /* TODO
+        Add settings for password management.
+        Add "How to" activity.
+     */
 }

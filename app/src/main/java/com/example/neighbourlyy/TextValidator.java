@@ -24,4 +24,8 @@ public abstract class TextValidator implements TextWatcher {
 
     @Override
     final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care */ }
+
+    /* TODO
+        None.
+     */
 }

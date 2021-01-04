@@ -58,5 +58,7 @@ public class Pet implements Parcelable {
         dest.writeString(owner);
     }
 
-
+    /* TODO
+        None.
+     */
 }

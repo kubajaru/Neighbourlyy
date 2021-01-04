@@ -50,4 +50,9 @@ public class EducationalUI extends AppCompatActivity {
             }
         });
     }
+
+    /* TODO
+        Create everything for educational UI activity.
+        Check all permission staff.
+     */
 }

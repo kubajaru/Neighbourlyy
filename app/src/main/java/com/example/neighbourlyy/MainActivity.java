@@ -33,4 +33,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, TIME_OUT);
     }
+
+    /* TODO
+        None.
+     */
 }

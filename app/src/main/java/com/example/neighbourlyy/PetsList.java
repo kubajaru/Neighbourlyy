@@ -69,4 +69,8 @@ public class PetsList extends AppCompatActivity {
             }
         });
     }
+
+    /* TODO
+        Add clicable list elements.
+     */
 }

@@ -63,4 +63,8 @@ public class LogIn extends AppCompatActivity {
             Toast.makeText(this, "Some field are empty!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    /*TODO
+        None.
+     */
 }

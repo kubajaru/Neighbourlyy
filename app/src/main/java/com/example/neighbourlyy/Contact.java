@@ -90,5 +90,8 @@ public class Contact extends AppCompatActivity {
             }
         });
 
+        /*TODO
+            None
+         */
     }
 }
