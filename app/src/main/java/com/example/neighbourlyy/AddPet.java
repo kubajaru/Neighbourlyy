@@ -33,7 +33,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText breedText = findViewById(R.id.BreedTV);
+        EditText breedText = findViewById(R.id.PetBreedTV);
         breedText.addTextChangedListener(new TextValidator(breedText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -43,7 +43,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText weightText = findViewById(R.id.WeightTV);
+        EditText weightText = findViewById(R.id.PetWeightTV);
         weightText.addTextChangedListener(new TextValidator(weightText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -73,7 +73,7 @@ public class AddPet extends AppCompatActivity {
             }
         });
 
-        EditText detailsText = findViewById(R.id.DetailsTV);
+        EditText detailsText = findViewById(R.id.PetDetailsTV);
         detailsText.addTextChangedListener(new TextValidator(detailsText) {
             @Override
             public void validate(TextView textView, String text) {
@@ -95,12 +95,10 @@ public class AddPet extends AppCompatActivity {
                     newPet.put("breed", breedText.getText().toString());
                     newPet.put("weight", weightText.getText().toString());
                     newPet.put("details", detailsText.getText().toString());
-                    String id = myRef.push().getKey();
-                    DatabaseReference newPetRecord = database.getReference("pets/" + id);
-                    newPetRecord.setValue(newPet);
-                    DatabaseReference user = database.getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pets");
-                    user.child(id).setValue(true);
+                    newPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    myRef.push().setValue(newPet);
                     Intent i = new Intent(AddPet.this, PetsList.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                 } else {
                     Toast.makeText(AddPet.this, "Provide all the information.", Toast.LENGTH_SHORT).show();

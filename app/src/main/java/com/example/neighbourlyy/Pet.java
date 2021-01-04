@@ -1,64 +1,62 @@
 package com.example.neighbourlyy;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 import java.math.BigDecimal;
 
-public class Pet {
-    private int id;
-    private String name;
-    private String breed;
-    private BigDecimal weight;
-    private Date availableFrom;
-    private Date availableTo;
-    private String details;
+public class Pet implements Parcelable {
+    public String name;
+    public String breed;
+    public String weight;
+    public String details;
+    public String owner;
 
-    public Pet(int id, String name, String breed, BigDecimal weight, Date availableFrom, Date availableTo, String details) {
-        this.id = id;
+    public Pet(String name, String breed, String weight, String details, String owner) {
         this.name = name;
         this.breed = breed;
         this.weight = weight;
-        this.availableFrom = availableFrom;
-        this.availableTo = availableTo;
         this.details = details;
+        this.owner = owner;
     }
 
-    public int getId() {
-        return id;
+    public Pet() {
     }
 
-    public void setAvailableFrom(Date availableFrom) {
-        this.availableFrom = availableFrom;
+    protected Pet(Parcel in) {
+        name = in.readString();
+        breed = in.readString();
+        weight = in.readString();
+        details = in.readString();
+        owner = in.readString();
     }
 
-    public void setAvailableTo(Date availableTo) {
-        this.availableTo = availableTo;
+    public static final Creator<Pet> CREATOR = new Creator<Pet>() {
+        @Override
+        public Pet createFromParcel(Parcel in) {
+            return new Pet(in);
+        }
+
+        @Override
+        public Pet[] newArray(int size) {
+            return new Pet[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(breed);
+        dest.writeString(weight);
+        dest.writeString(details);
+        dest.writeString(owner);
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public BigDecimal getWeight() {
-        return weight;
-    }
-
-    public Date getAvailableFrom() {
-        return availableFrom;
-    }
-
-    public Date getAvailableTo() {
-        return availableTo;
-    }
-
-    public String getDetails() {
-        return details;
-    }
 }

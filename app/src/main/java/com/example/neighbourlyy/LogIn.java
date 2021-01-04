@@ -50,6 +50,7 @@ public class LogIn extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Intent i = new Intent(LogIn.this, MainMenu.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
                     } else {
                         // If sign in fails, display a message to the user.

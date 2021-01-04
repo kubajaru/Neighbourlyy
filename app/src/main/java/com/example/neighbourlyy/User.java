@@ -48,17 +48,4 @@ public class User {
     public boolean removePet(Pet pet) {
         return pets.remove(pet);
     }
-
-    public Pet getPetById(int id) {
-        for (Pet pet : pets) {
-            if (pet.getId() == id) {
-                return pet;
-            }
-        }
-        return null;
-    }
-
-    public boolean removePetById(int id) {
-        return pets.remove(getPetById(id));
-    }
 }

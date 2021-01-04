@@ -1,5 +1,6 @@
 package com.example.neighbourlyy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -8,7 +9,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -20,58 +24,63 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class Map extends AppCompatActivity implements OnMapReadyCallback {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Map extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationClient;
-    private  EditText locationTV;
-    private MapView mapView;
     private GoogleMap mMap;
     private Location ourLocation;
+    private List<Pet> pets;
+    private CustomAdapter adapter;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        locationTV = findViewById(R.id.locationTV);
-        mapView = findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("pets");
+        pets = new ArrayList<Pet>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pets.clear();
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Pet pet = postSnapshot.getValue(Pet.class);
+                    if (!pet.owner.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                        pets.add(pet);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
+            }
+        });
 
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
+        list = findViewById(R.id.listViewAll);
+        adapter = new CustomAdapter(this, 0, pets);
+        list.setAdapter(adapter);
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(Map.this, Contact.class);
+                i.putExtra("chosenPet", pets.get(position));
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -100,38 +109,5 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         }
         // Other 'case' lines to check for other
         // permissions this app might request.
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        if (ContextCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
-            // You can use the API that requires the permission.
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                ourLocation = location;
-                                LatLng point = new LatLng(location.getLatitude(), location.getLongitude());
-                                mMap.addMarker(new MarkerOptions().position(point)
-                                        .title("Your position."));
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
-                            } else {
-                                locationTV.setText("Failed");
-                            }
-                        }
-                    });
-        } else {
-            // You can directly ask for the permission.
-            // The registered ActivityResultCallback gets the result of this request.
-            requestPermissions(new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, 123);
-        }
     }
 }

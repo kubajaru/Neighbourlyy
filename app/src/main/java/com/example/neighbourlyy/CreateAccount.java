@@ -187,6 +187,7 @@ public class CreateAccount extends AppCompatActivity {
                                         Toast.makeText(CreateAccount.this, "Error occured", Toast.LENGTH_SHORT).show();
                                     }
                                     Intent i = new Intent(CreateAccount.this, MainMenu.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);
                                 }
                                 else {
