@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.341"
-        tools:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/addPet_detailsTV"
@@ -64,12 +64,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_setToBtn"
         app:layout_constraintVertical_bias="0.035"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/addPet_breedTV"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
 
     <ImageView
         android:id="@+id/logo"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"
         android:layout_width="112dp"
         android:layout_height="115dp"
@@ -101,7 +101,7 @@
 
     <EditText
         android:id="@+id/addPet_weightTV"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
         app:layout_constraintVertical_bias="0.0"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"/>
 
     <EditText
@@ -149,12 +149,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_fromTV"
         app:layout_constraintVertical_bias="0.016"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"/>
 
     <ImageButton
         android:id="@+id/addPet_backBtn"
         android:layout_width="wrap_content"
+        android:background="@null"
         android:layout_height="wrap_content"
         android:contentDescription="@string/backButtonDescription"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,6 +10,7 @@
         android:id="@+id/logIn_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:contentDescription="@string/backButtonDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"/>
 
     <TextView
@@ -91,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
         app:layout_constraintVertical_bias="0.0"
-        tools:textColorHint="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColor="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
