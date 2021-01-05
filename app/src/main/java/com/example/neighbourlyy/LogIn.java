@@ -26,6 +26,9 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         mAuth = FirebaseAuth.getInstance();
         EditText emailText = findViewById(R.id.editTextTextEmailAddress2);

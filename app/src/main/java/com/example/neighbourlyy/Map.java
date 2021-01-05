@@ -48,6 +48,9 @@ public class Map extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (ContextCompat.checkSelfPermission(

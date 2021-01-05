@@ -49,6 +49,9 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         mAuth = FirebaseAuth.getInstance();
         coder = new Geocoder(this);

@@ -38,6 +38,9 @@ public class UpdatePet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pet);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         Intent i = getIntent();
         Pet chosenPet = (Pet) i.getParcelableExtra("chosenPet");

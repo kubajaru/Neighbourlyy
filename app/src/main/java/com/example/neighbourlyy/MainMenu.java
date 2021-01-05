@@ -19,6 +19,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         TextView header = findViewById(R.id.mainMenu_greetingTV);
 

@@ -37,6 +37,9 @@ public class AddPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         Intent i = getIntent();
         names = i.getStringArrayListExtra("names");
