@@ -109,7 +109,7 @@ public class ChangeEmail extends AppCompatActivity {
                     Toast.makeText(ChangeEmail.this, getString(R.string.toast), Toast.LENGTH_SHORT).show();
                 }
             }
-
+            // zabawa
         });
 
         ImageButton backBtn = findViewById(R.id.email_backBtn);
