@@ -85,19 +85,21 @@
         android:id="@+id/updatePet_fromTV"
         android:layout_width="122dp"
         android:layout_height="41dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintHorizontal_bias="0.346"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV" />
 
     <EditText
         android:id="@+id/updatePet_toTV"
-        android:layout_width="119dp"
-        android:layout_height="42dp"
+        android:layout_width="122dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
@@ -133,28 +135,28 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_toTV"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/updatePet_fromBtn"
-        android:layout_width="65dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:text="Button"
+        android:text="@string/setFrom"
         app:layout_constraintStart_toEndOf="@+id/updatePet_fromTV"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV" />
 
     <Button
         android:id="@+id/updatePet_toBtn"
-        android:layout_width="66dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/setTo"
         app:layout_constraintStart_toEndOf="@+id/updatePet_toTV"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_fromBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
