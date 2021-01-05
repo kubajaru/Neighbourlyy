@@ -23,7 +23,7 @@ public class EducationalUI extends AppCompatActivity {
                     // same time, respect the user's decision. Don't link to system
                     // settings in an effort to convince the user to change their
                     // decision.
-                    Intent i = new Intent(EducationalUI.this, MainMenu.class);
+                    Intent i = new Intent(EducationalUI.this, Map.class);
                     startActivity(i);
                 }
             });
@@ -37,7 +37,7 @@ public class EducationalUI extends AppCompatActivity {
         denyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EducationalUI.this, MainMenu.class);
+                Intent i = new Intent(EducationalUI.this, Map.class);
                 startActivity(i);
             }
         });

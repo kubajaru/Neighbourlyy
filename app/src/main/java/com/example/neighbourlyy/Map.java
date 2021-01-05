@@ -35,17 +35,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map extends AppCompatActivity {
-    private FusedLocationProviderClient fusedLocationClient;
-    private GoogleMap mMap;
-    private Location ourLocation;
     private List<Pet> pets;
     private CustomAdapter adapter;
     private ListView list;
+    private FusedLocationProviderClient fusedLocationClient;
+    private boolean permission;
+    private double Latitude;
+    private double Longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            // You can use the API that requires the permission.
+            permission = true;
+
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                Latitude = location.getLatitude();
+                                Longitude = location.getLongitude();
+                            }
+                        }
+                    });
+        } else {
+            // You can directly ask for the permission.
+            // The registered ActivityResultCallback gets the result of this request.
+            requestPermissions( new String[] { Manifest.permission.ACCESS_FINE_LOCATION}, 666);
+        }
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("pets");
@@ -57,7 +85,12 @@ public class Map extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Pet pet = postSnapshot.getValue(Pet.class);
                     if (!pet.owner.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                        pets.add(pet);
+                        if (permission) {
+                            pets.add(pet);
+                        } else {
+                            Toast.makeText(Map.this, "Random list", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 }
                 adapter.notifyDataSetChanged();
@@ -83,36 +116,30 @@ public class Map extends AppCompatActivity {
         });
     }
 
-
-
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case 123:
+            case 666:
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission is granted. Continue the action or workflow
                     // in your app.
-                    recreate();
+                    Intent i = new Intent(Map.this, Map.class);
+                    startActivity(i);
                 } else {
                     // Explain to the user that the feature is unavailable because
                     // the features requires a permission that the user has denied.
                     // At the same time, respect the user's decision. Don't link to
                     // system settings in an effort to convince the user to change
                     // their decision.
-                    Toast.makeText(Map.this, "Without location permission this part will not work.", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Map.this, MainMenu.class);
-                    startActivity(i);
+                    permission = false;
+                    Toast.makeText(Map.this, "Without this permission you will see whole database of pets without filtering.", Toast.LENGTH_LONG).show();
                 }
                 return;
         }
-
-        /* TODO
-            Check permissions
-            Add getting location of current user.
-            Add calculating distance.
-            Add selecting only pets in range.
-         */
     }
 }
+

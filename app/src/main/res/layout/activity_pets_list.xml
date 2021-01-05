@@ -10,7 +10,7 @@
         android:id="@+id/petsList_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background=""
+        android:background="@null"
         android:contentDescription="@string/backButtonDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
