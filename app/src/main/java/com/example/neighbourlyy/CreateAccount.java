@@ -134,7 +134,7 @@ public class CreateAccount extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount(emailText.getText().toString(), passwordText.getText().toString(), nameText.getText().toString(), phoneNumberText.getText().toString(), createAddressString(postalCodeText.getText().toString(), cityText.getText().toString(), streetAndNumber.getText().toString()));
+                createAccount(emailText.getText().toString(), passwordText.getText().toString(), nameText.getText().toString(), phoneNumberText.getText().toString(), postalCodeText.getText().toString(), cityText.getText().toString(), streetAndNumber.getText().toString());
             }
         });
 
@@ -148,7 +148,7 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
-    public void createAccount(String email, String password, String name, String phoneNumber, String address) {
+    public void createAccount(String email, String password, String name, String phoneNumber, String postalCode, String city, String street) {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches() & PASSWORD_PATTERN.matcher(password).matches()) {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -178,22 +178,10 @@ public class CreateAccount extends AppCompatActivity {
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference myRef = database.getReference("users");
                                     myRef.child(newUser.getUid()).child("Name").setValue(newUser.getDisplayName());
-                                    myRef.child(newUser.getUid()).child("Phone number").setValue(phoneNumber);
-                                    myRef.child(newUser.getUid()).child("Address").setValue(address);
-                                    try {
-                                        List<Address> addressList = coder.getFromLocationName(address, 2);
-                                        if (addressList != null) {
-                                            myRef.child(newUser.getUid()).child("Longitude").setValue(addressList.get(0).getLongitude());
-                                            myRef.child(newUser.getUid()).child("Latitude").setValue(addressList.get(0).getLatitude());
-                                        } else {
-                                            Toast.makeText(CreateAccount.this, getString(R.string.addressCodingFailed), Toast.LENGTH_SHORT).show();
-                                            Log.e(TAG, "Address not found. List of addresses is null");
-                                        }
-                                    }
-                                    catch (IOException ex){
-                                        Toast.makeText(CreateAccount.this, getString(R.string.coderFail), Toast.LENGTH_SHORT).show();
-                                        Log.e(TAG, "Unexpected error occured during coding address into coordinates.", ex);
-                                    }
+                                    myRef.child(newUser.getUid()).child("phoneNumber").setValue(phoneNumber);
+                                    myRef.child(newUser.getUid()).child("postalCode").setValue(postalCode);
+                                    myRef.child(newUser.getUid()).child("city").setValue(city);
+                                    myRef.child(newUser.getUid()).child("street").setValue(street);
                                     Intent i = new Intent(CreateAccount.this, MainMenu.class);
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(i);
