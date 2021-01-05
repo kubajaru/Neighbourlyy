@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +28,7 @@ public class PetsList extends AppCompatActivity {
     List<Pet> pets;
     ListView list;
     CustomAdapter adapter;
+    private ArrayList<String> names;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class PetsList extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("pets");
         pets = new ArrayList<Pet>();
+        names = new ArrayList<String>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -43,6 +47,7 @@ public class PetsList extends AppCompatActivity {
                     Pet pet = postSnapshot.getValue(Pet.class);
                     if (pet.owner.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         pets.add(pet);
+                        names.add(pet.name);
                     }
                 }
                 adapter.notifyDataSetChanged();
@@ -59,18 +64,38 @@ public class PetsList extends AppCompatActivity {
         System.out.println(pets.size() + "here");
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(PetsList.this, UpdatePet.class);
+                i.putExtra("chosenPet", pets.get(position));
+                startActivity(i);
+            }
+        });
+
 
         Button addPetBtn = findViewById(R.id.AddPetBtn);
         addPetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(PetsList.this, AddPet.class);
+                i.putExtra("names", names);
                 startActivity(i);
             }
         });
+
+        ImageButton backBtn = findViewById(R.id.petsList_backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PetsList.this, MainMenu.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     /* TODO
-        Add clicable list elements.
+        None
      */
 }

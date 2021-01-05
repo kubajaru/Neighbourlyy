@@ -8,8 +8,9 @@
 
     <queries>
         <intent>
-            <action android:name="android.intent.action.SENDTO"/>
-            <data android:mimeType="text/plain"/>
+            <action android:name="android.intent.action.SENDTO" />
+
+            <data android:mimeType="text/plain" />
         </intent>
     </queries>
 
@@ -20,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Neighbourlyy">
-        <activity android:name=".Contact"></activity>
+        <activity android:name=".UpdatePet"></activity>
+        <activity android:name=".Contact" />
         <activity android:name=".PetsList" />
 
         <meta-data

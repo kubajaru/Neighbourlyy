@@ -43,4 +43,8 @@
     <string name="coderFail">Unexpected error occured. Please relaunch your app.</string>
     <string name="addressCodingFailed">Address is incorrect. Please check it and try one more time.</string>
     <string name="sendingEmailFailed">Your email does not exist. Please check it and try again.</string>
+    <string name="deleteBtn">Delete</string>
+    <string name="updateBtn">Update</string>
+    <string name="setFrom">Set</string>
+    <string name="setTo">Set</string>
 </resources>
