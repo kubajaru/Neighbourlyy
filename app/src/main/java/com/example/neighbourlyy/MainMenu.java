@@ -1,5 +1,6 @@
 package com.example.neighbourlyy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -11,6 +12,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainMenu extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -64,6 +70,30 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainMenu.this, PetsList.class);
                 startActivity(i);
+            }
+        });
+
+        Button settingsBtn = findViewById(R.id.mainMenu_settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference userRef = database.getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User user = snapshot.getValue(User.class);
+                        System.out.println(user.name);
+                        Intent i = new Intent(MainMenu.this, Settings.class);
+                        i.putExtra("currentUser", user);
+                        startActivity(i);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
     }

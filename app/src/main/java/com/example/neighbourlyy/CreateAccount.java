@@ -180,7 +180,7 @@ public class CreateAccount extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference myRef = database.getReference("users");
-                                    myRef.child(newUser.getUid()).child("Name").setValue(newUser.getDisplayName());
+                                    myRef.child(newUser.getUid()).child("name").setValue(newUser.getDisplayName());
                                     myRef.child(newUser.getUid()).child("phoneNumber").setValue(phoneNumber);
                                     myRef.child(newUser.getUid()).child("postalCode").setValue(postalCode);
                                     myRef.child(newUser.getUid()).child("city").setValue(city);

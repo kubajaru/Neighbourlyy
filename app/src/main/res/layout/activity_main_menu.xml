@@ -21,7 +21,7 @@
         app:rippleColor="#009688" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/mainMenu_settingsBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

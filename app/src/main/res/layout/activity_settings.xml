@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/backward_arrow" />
 
     <Button
-        android:id="@+id/signInBtn3"
+        android:id="@+id/settings_confirrmBtn"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:text="@string/confirm_changes"
