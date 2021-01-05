@@ -50,4 +50,6 @@
     <string name="greeting">Hello %1$s</string>
     <string name="incorrect_time">Time set uncorrected. You can set time during one day.</string>
     <string name="incorrect_name">Name already exists, provide unique name</string>
+    <string name="confirm_changes">Confirm changes</string>
+    <string name="revert_changes">Revert changes</string>
 </resources>
