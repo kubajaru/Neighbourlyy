@@ -47,4 +47,7 @@
     <string name="updateBtn">Update</string>
     <string name="setFrom">Set</string>
     <string name="setTo">Set</string>
+    <string name="greeting">Hello %1$s</string>
+    <string name="incorrect_time">Time set uncorrected. You can set time during one day.</string>
+    <string name="incorrect_name">Name already exists, provide unique name</string>
 </resources>

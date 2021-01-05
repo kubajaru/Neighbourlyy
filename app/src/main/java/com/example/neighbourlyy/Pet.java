@@ -12,6 +12,8 @@ public class Pet implements Parcelable {
     public String weight;
     public String details;
     public String owner;
+    public String from;
+    public String to;
 
     public Pet(String name, String breed, String weight, String details, String owner) {
         this.name = name;
@@ -30,6 +32,8 @@ public class Pet implements Parcelable {
         weight = in.readString();
         details = in.readString();
         owner = in.readString();
+        from = in.readString();
+        to = in.readString();
     }
 
     public static final Creator<Pet> CREATOR = new Creator<Pet>() {
@@ -56,6 +60,8 @@ public class Pet implements Parcelable {
         dest.writeString(weight);
         dest.writeString(details);
         dest.writeString(owner);
+        dest.writeString(from);
+        dest.writeString(to);
     }
 
     /* TODO

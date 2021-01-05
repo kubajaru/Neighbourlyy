@@ -113,21 +113,28 @@ public class AddPet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!petNameText.getText().toString().isEmpty() & !breedText.getText().toString().isEmpty() & !weightText.getText().toString().isEmpty() & !detailsText.getText().toString().isEmpty()) {
-                    if (!names.contains(petNameText.getText().toString()) & timeOverlap(fromTV.getText().toString(), toTV.getText().toString())) {
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("pets");
-                        HashMap<String, String> newPet = new HashMap<>();
-                        newPet.put("name", petNameText.getText().toString());
-                        newPet.put("breed", breedText.getText().toString());
-                        newPet.put("weight", weightText.getText().toString());
-                        newPet.put("details", detailsText.getText().toString());
-                        newPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        myRef.push().setValue(newPet);
-                        Intent i = new Intent(AddPet.this, PetsList.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
+                    if (!names.contains(petNameText.getText().toString())) {
+                        if (timeOverlap(fromTV.getText().toString(), toTV.getText().toString())) {
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("pets");
+                            HashMap<String, String> newPet = new HashMap<>();
+                            newPet.put("name", petNameText.getText().toString());
+                            newPet.put("breed", breedText.getText().toString());
+                            newPet.put("weight", weightText.getText().toString());
+                            newPet.put("details", detailsText.getText().toString());
+                            newPet.put("from", fromTV.getText().toString());
+                            newPet.put("to", toTV.getText().toString());
+                            newPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            myRef.push().setValue(newPet);
+                            Intent i = new Intent(AddPet.this, PetsList.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(AddPet.this, getString(R.string.incorrect_time), Toast.LENGTH_SHORT).show();
+                            Log.w(TAG, "User provided name which already exists");
+                        }
                     } else {
-                        Toast.makeText(AddPet.this, "Name already exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddPet.this, getString(R.string.incorrect_name), Toast.LENGTH_SHORT).show();
                         Log.w(TAG, "User provided name which already exists");
                     }
                 } else {
@@ -148,8 +155,7 @@ public class AddPet extends AppCompatActivity {
         });
 
         /* TODO
-            Time picker
-            Fix strings
+            Check toast
          */
 
     }

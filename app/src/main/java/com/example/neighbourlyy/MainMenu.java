@@ -19,11 +19,11 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        TextView header = findViewById(R.id.HeaderTV);
+        TextView header = findViewById(R.id.mainMenu_greetingTV);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        header.setText(user.getEmail());
+        header.setText(String.format(getString(R.string.greeting), user.getDisplayName()));
 
         Button logOutBtn = findViewById(R.id.logOutBtn);
         logOutBtn.setOnClickListener(new View.OnClickListener() {
