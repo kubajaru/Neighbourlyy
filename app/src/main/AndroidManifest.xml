@@ -21,9 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Neighbourlyy">
-        <activity android:name=".HowToStart"></activity>
+        <activity android:name=".ChangeEmail"></activity>
+        <activity android:name=".HowToStart" />
         <activity android:name=".UpdatePet" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
         <activity android:name=".UpdatePet" />
         <activity android:name=".Contact" />
         <activity android:name=".PetsList" />
