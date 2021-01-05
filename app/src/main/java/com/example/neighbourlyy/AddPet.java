@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class AddPet extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class AddPet extends AppCompatActivity {
     private ArrayList<String> names = new ArrayList<>();
     private EditText fromTV;
     private EditText toTV;
+    private Date from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +116,7 @@ public class AddPet extends AppCompatActivity {
                 System.out.println(from);
                 String to = toTV.getText().toString();
                 System.out.println(to);
+                System.out.println(timeOverlap(from, to));
                 if (!petNameText.getText().toString().isEmpty() & !breedText.getText().toString().isEmpty() & !weightText.getText().toString().isEmpty() & !detailsText.getText().toString().isEmpty()) {
                     if (!names.contains(petNameText.getText().toString())) {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -129,11 +132,11 @@ public class AddPet extends AppCompatActivity {
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);
                     } else {
-                       // Toast.makeText(AddPet.this, "Name already exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddPet.this, "Name already exists", Toast.LENGTH_SHORT).show();
                         Log.w(TAG, "User provided name which already exists");
                     }
                 } else {
-                    //Toast.makeText(AddPet.this, getString(R.string.toast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPet.this, getString(R.string.toast), Toast.LENGTH_SHORT).show();
                     Log.w(TAG, "User provided incorrect data");
                 }
             }
@@ -187,18 +190,26 @@ public class AddPet extends AppCompatActivity {
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             // Do something with the time chosen by the user
+
             String time;
-            if (hourOfDay < 10) {
+            if (hourOfDay < 10 & minute < 10) {
+                time = "0" + hourOfDay + ":0" + minute;
+            } else if (hourOfDay > 10 & minute < 10) {
+                time = "" + hourOfDay + ":0" + minute;
+            } else if (hourOfDay < 10 & minute > 10) {
                 time = "0" + hourOfDay + ":" + minute;
             } else {
-                time = "" + hourOfDay + ":" + minute;
+                    time = "" + hourOfDay + ":" + minute;
             }
             text.setText(time);
         }
     }
 
     private int timeOverlap(String from, String to) {
-        int fromHour = Integer.parseInt(from.substring(0,1));
+        int fromHour = Integer.parseInt(from.substring(0,2));
+        System.out.println(fromHour);
+        return 0;
+        /*
         int fromMin = Integer.parseInt(from.substring(3,4));
         int toHour =  Integer.parseInt(to.substring(0,1));
         int toMin = Integer.parseInt(to.substring(3,4));
@@ -210,6 +221,8 @@ public class AddPet extends AppCompatActivity {
         } else {
             return 0;
         }
+
+         */
     }
 
 }
