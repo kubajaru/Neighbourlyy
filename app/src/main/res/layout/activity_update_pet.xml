@@ -148,7 +148,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/setFrom"
         app:layout_constraintStart_toEndOf="@+id/updatePet_fromTV"
-        app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV"
+        android:onClick="showFromTimePicker2"/>
 
     <Button
         android:id="@+id/updatePet_toBtn"
@@ -158,5 +159,18 @@
         android:layout_marginTop="4dp"
         android:text="@string/setTo"
         app:layout_constraintStart_toEndOf="@+id/updatePet_toTV"
-        app:layout_constraintTop_toBottomOf="@+id/updatePet_fromBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePet_fromBtn"
+        android:onClick="showToTimePicker2"/>
+
+    <ImageButton
+        android:id="@+id/updatePet_backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/backward_arrow" />
 </androidx.constraintlayout.widget.ConstraintLayout>

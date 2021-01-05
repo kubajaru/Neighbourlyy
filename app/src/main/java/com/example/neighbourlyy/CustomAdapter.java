@@ -34,7 +34,10 @@ public class CustomAdapter extends ArrayAdapter<Pet> {
         weight.setText(pet.get(position).weight);
         TextView details = listItem.findViewById(R.id.detailsTV);
         details.setText(pet.get(position).details);
-
+        TextView from = listItem.findViewById(R.id.fromTV);
+        from.setText(pet.get(position).from);
+        TextView to = listItem.findViewById(R.id.toTV);
+        to.setText(pet.get(position).to);
         return listItem;
     }
 

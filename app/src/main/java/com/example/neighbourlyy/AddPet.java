@@ -131,7 +131,7 @@ public class AddPet extends AppCompatActivity {
                             startActivity(i);
                         } else {
                             Toast.makeText(AddPet.this, getString(R.string.incorrect_time), Toast.LENGTH_SHORT).show();
-                            Log.w(TAG, "User provided name which already exists");
+                            Log.w(TAG, "User provided overlapping time interval");
                         }
                     } else {
                         Toast.makeText(AddPet.this, getString(R.string.incorrect_name), Toast.LENGTH_SHORT).show();
