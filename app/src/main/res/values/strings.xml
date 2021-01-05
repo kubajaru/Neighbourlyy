@@ -51,10 +51,10 @@
     <string name="incorrect_time">Time set uncorrected. You can set time during one day.</string>
     <string name="incorrect_name">Name already exists, provide unique name</string>
     <string name="how_tostart">How to start?</string>
-    <string name="how_to_start_desc">Hello! Thank you for downloading our application. Do you want someone to go on a walk with your pet? First, simply click back button.
-    Next, in main menu choose "YOUR PETS". After that, click "ADD" button, fill fields and do not forget to click "SAVE"!
-        Finally, wait for a message from a volunteer and determine all details. Would you like to help someone instead?
-    Just click back button and in main menu choose "HELP OTHERS".  </string>
+    <string name="how_to_start_desc">Hello! Thank you for downloading our application. /nDo you want someone to go on a walk with your pet? /nFirst, simply click back button.
+    Next, in the main menu choose "YOUR PETS". After that, click "ADD" button, fill fields and do not forget to click "SAVE"!
+        Finally, wait for a message from a volunteer and determine all details. /nWould you like to help someone instead?
+    /nJust click back button and in the main menu choose "HELP OTHERS".  </string>
     <string name="confirm_changes">Confirm changes</string>
     <string name="revert_changes">Revert changes</string>
     <string name="new_e_mail">New E-mail</string>
