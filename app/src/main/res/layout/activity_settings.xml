@@ -128,24 +128,6 @@
         tools:textColorLink="#FFFFFF" />
 
     <EditText
-        android:id="@+id/ETPasswordEdit"
-        android:layout_width="327dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="444dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETEmailEdit"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
         android:id="@+id/ETPostalEdit"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
@@ -161,22 +143,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ETNameEdit"
         app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/ETEmailEdit"
-        android:layout_width="327dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/e_mail"
-        android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
 
     <EditText
         android:id="@+id/ETNameEdit"
@@ -200,8 +166,6 @@
         android:id="@+id/ETPhoneEdit"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="388dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/phone_number"
@@ -211,6 +175,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETPasswordEdit"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327" />
 </androidx.constraintlayout.widget.ConstraintLayout>
