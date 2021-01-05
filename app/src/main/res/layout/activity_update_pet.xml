@@ -6,35 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".UpdatePet">
 
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="112dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/updatePet_headerTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="cursive"
         android:text="@string/neighbourlyy"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textSize="36sp" />
 
     <Button
         android:id="@+id/updatePet_deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/deleteBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/updatePet_updateBtn"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/updatePet_updateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/updateBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -46,6 +61,7 @@
         android:layout_marginTop="48dp"
         android:autofillHints=""
         android:ems="10"
+        android:textColor="#FFFFFF"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -56,62 +72,71 @@
         android:id="@+id/updatePet_breedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updatePet_nameTV"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePet_nameTV" />
 
     <EditText
         android:id="@+id/updatePet_fromTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePet_weightTV" />
 
     <EditText
         android:id="@+id/updatePet_toTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_fromTV"
-        app:layout_constraintVertical_bias="0.0"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/updatePet_weightTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="number"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updatePet_breedTV"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePet_breedTV" />
 
     <EditText
         android:id="@+id/updatePet_detailsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updatePet_toTV"
-        app:layout_constraintVertical_bias="0.0"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

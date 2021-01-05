@@ -59,7 +59,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.362"
-        tools:textColorHint="#FFFFFF" />
+        tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -90,6 +91,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
         app:layout_constraintVertical_bias="0.0"
-        tools:textColorHint="#FFFFFF" />
+        tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

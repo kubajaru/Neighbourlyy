@@ -17,6 +17,7 @@
         android:inputType="textPostalAddress"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/signInBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
     <EditText
         android:id="@+id/CityTV"
         android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -89,6 +91,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/full_name"
+        android:textColor="#FFFFFF"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +106,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
+        android:textColor="#FFFFFF"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,6 +118,7 @@
     <EditText
         android:id="@+id/editTextPhone"
         android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -130,6 +135,7 @@
     <EditText
         android:id="@+id/PostalCodeTV"
         android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -146,6 +152,7 @@
     <EditText
         android:id="@+id/editTextTextPassword"
         android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

@@ -64,11 +64,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_setToBtn"
         app:layout_constraintVertical_bias="0.035"
-        tools:textColorHint="#FFFFFF" />
+        tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/addPet_breedTV"
         tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -85,6 +87,7 @@
     <ImageView
         android:id="@+id/logo"
         tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="112dp"
         android:layout_height="115dp"
         android:contentDescription="@string/logo"
@@ -99,6 +102,7 @@
     <EditText
         android:id="@+id/addPet_weightTV"
         tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -127,7 +131,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
         app:layout_constraintVertical_bias="0.0"
-        tools:textColorHint="#FFFFFF" />
+        tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/addPet_toTV"
@@ -144,7 +149,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_fromTV"
         app:layout_constraintVertical_bias="0.016"
-        tools:textColorHint="#FFFFFF" />
+        tools:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <ImageButton
         android:id="@+id/addPet_backBtn"
