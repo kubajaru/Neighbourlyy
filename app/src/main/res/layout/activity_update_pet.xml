@@ -154,7 +154,7 @@
         android:id="@+id/updatePet_toBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:text="@string/setTo"
         app:layout_constraintStart_toEndOf="@+id/updatePet_toTV"
