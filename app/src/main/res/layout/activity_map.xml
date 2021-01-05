@@ -33,9 +33,10 @@
     <ImageButton
         android:id="@+id/map_BackBtn"
         android:layout_width="wrap_content"
-        android:background="@null"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@null"
+        android:contentDescription="@string/backarrow"
         app:layout_constraintEnd_toStartOf="@+id/imageView15"
         app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"

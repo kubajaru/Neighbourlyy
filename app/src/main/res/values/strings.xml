@@ -61,4 +61,10 @@
     <string name="current_password">Current password</string>
     <string name="new_password">New password</string>
     <string name="repeat_password">Repeat password</string>
+    <string name="details">Details:</string>
+    <string name="weightDisp">Weight:</string>
+    <string name="breedDisp">Breed:</string>
+    <string name="nameDisp">Name:</string>
+    <string name="name">Name</string>
+    <string name="detailsDisp">Details</string>
 </resources>
