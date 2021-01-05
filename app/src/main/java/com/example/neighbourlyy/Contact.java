@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -90,6 +91,15 @@ public class Contact extends AppCompatActivity {
                     Log.e(TAG, "SMS activity not opened.");
                 }
             }
+            }
+        });
+
+        ImageButton back = findViewById(R.id.contact_backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Contact.this, Map.class);
+                startActivity(i);
             }
         });
 
