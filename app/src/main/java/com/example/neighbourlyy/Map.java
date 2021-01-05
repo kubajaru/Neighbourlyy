@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,6 +52,15 @@ public class Map extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        ImageButton backBtn = findViewById(R.id.map_BackBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Map.this, MainMenu.class);
+                startActivity(i);
+            }
+        });
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (ContextCompat.checkSelfPermission(
