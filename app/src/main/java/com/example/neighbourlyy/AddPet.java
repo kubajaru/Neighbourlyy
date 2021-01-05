@@ -112,13 +112,8 @@ public class AddPet extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String from = fromTV.getText().toString();
-                System.out.println(from);
-                String to = toTV.getText().toString();
-                System.out.println(to);
-                System.out.println(timeOverlap(from, to));
                 if (!petNameText.getText().toString().isEmpty() & !breedText.getText().toString().isEmpty() & !weightText.getText().toString().isEmpty() & !detailsText.getText().toString().isEmpty()) {
-                    if (!names.contains(petNameText.getText().toString())) {
+                    if (!names.contains(petNameText.getText().toString()) & timeOverlap(fromTV.getText().toString(), toTV.getText().toString())) {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("pets");
                         HashMap<String, String> newPet = new HashMap<>();
@@ -205,24 +200,19 @@ public class AddPet extends AppCompatActivity {
         }
     }
 
-    private int timeOverlap(String from, String to) {
+    private boolean timeOverlap(String from, String to) {
         int fromHour = Integer.parseInt(from.substring(0,2));
-        System.out.println(fromHour);
-        return 0;
-        /*
-        int fromMin = Integer.parseInt(from.substring(3,4));
-        int toHour =  Integer.parseInt(to.substring(0,1));
-        int toMin = Integer.parseInt(to.substring(3,4));
+        int fromMin = Integer.parseInt(from.substring(3,5));
+        int toHour =  Integer.parseInt(to.substring(0,2));
+        int toMin = Integer.parseInt(to.substring(3,5));
 
         if (fromHour < toHour) {
-            return 1;
+            return true;
         } else if (fromHour == toHour & fromMin < toMin) {
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
-
-         */
     }
 
 }
