@@ -21,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Neighbourlyy">
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".ChangePassword" />
         <activity android:name=".ChangeEmail" />
         <activity android:name=".HowToStart" />
         <activity android:name=".UpdatePet" />

@@ -24,15 +24,13 @@
         android:id="@+id/settings_confirrmBtn"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="528dp"
         android:text="@string/confirm_changes"
         android:textColorHighlight="@color/black"
         app:iconTint="#009688"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775"
         app:rippleColor="#009688" />
 
     <Button
@@ -40,18 +38,19 @@
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="88dp"
         android:text="Change password"
         android:textColorHighlight="@color/black"
         app:iconTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn3"
+        app:layout_constraintTop_toBottomOf="@+id/settings_confirrmBtn"
         app:layout_constraintVertical_bias="0.0"
         app:rippleColor="#009688" />
 
     <Button
-        android:id="@+id/signInBtn5"
+        android:id="@+id/settings_EmailBtn"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
