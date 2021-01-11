@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,15 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn(emailText.getText().toString(), passwordText.getText().toString());
+            }
+        });
+
+        ImageButton backBtn = findViewById(R.id.logIn_backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LogIn.this, CreateAccount.class);
+                startActivity(i);
             }
         });
     }
