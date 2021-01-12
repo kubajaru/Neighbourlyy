@@ -63,7 +63,7 @@ public class Contact extends AppCompatActivity {
             }
         });
 
-        DatabaseReference nameRef = database.getReference("users/" + chosenPet.owner + "/Name");
+        DatabaseReference nameRef = database.getReference("users/" + chosenPet.owner + "/name");
         nameRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
