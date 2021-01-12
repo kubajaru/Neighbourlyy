@@ -49,7 +49,7 @@ public class Contact extends AppCompatActivity {
         detailsTV.setText(chosenPet.details);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference phoneRef = database.getReference("users/" + chosenPet.owner + "/Phone number");
+        DatabaseReference phoneRef = database.getReference("users/" + chosenPet.owner + "/phoneNumber");
         phoneRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,7 +81,7 @@ public class Contact extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println(phoneNumber);
-                if (!phoneNumber.isEmpty()) {
+                if (phoneNumber != null) {
                 Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
                 smsIntent.setData(Uri.parse("smsto:" + phoneNumber));
                 smsIntent.putExtra("sms_body", String.format(getString(R.string.smsContent), fullName, FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
@@ -92,6 +92,7 @@ public class Contact extends AppCompatActivity {
                 }
             }
             }
+
         });
 
         ImageButton back = findViewById(R.id.contact_backBtn);
