@@ -147,7 +147,7 @@
         android:id="@+id/help_weightTV3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="kg"
+        android:text="@string/kg"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/help_weightTV"
@@ -157,7 +157,7 @@
 
     <TextView
         android:id="@+id/help_detailsTV"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/detailsDisp"
