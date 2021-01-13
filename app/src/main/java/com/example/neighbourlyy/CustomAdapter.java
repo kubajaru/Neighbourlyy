@@ -28,16 +28,21 @@ public class CustomAdapter extends ArrayAdapter<Pet> {
 
         TextView name = listItem.findViewById(R.id.nameTV);
         name.setText(pet.get(position).name);
+
         TextView breed = listItem.findViewById(R.id.breedTB);
-        breed.setText(pet.get(position).breed);
+        breed.setText("Breed: " + pet.get(position).breed);
+
         TextView weight = listItem.findViewById(R.id.weightTV);
-        weight.setText(pet.get(position).weight);
+        weight.setText("Weight: " + pet.get(position).weight + " kg");
+
         TextView details = listItem.findViewById(R.id.detailsTV);
-        details.setText(pet.get(position).details);
+        details.setText("Details: " + pet.get(position).details);
+
         TextView from = listItem.findViewById(R.id.fromTV);
-        from.setText(pet.get(position).from);
+        from.setText("Available from: " + pet.get(position).from);
+
         TextView to = listItem.findViewById(R.id.toTV);
-        to.setText(pet.get(position).to);
+        to.setText("Available to: " + pet.get(position).to);
         return listItem;
     }
 

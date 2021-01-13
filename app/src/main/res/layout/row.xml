@@ -15,7 +15,7 @@
             android:id="@+id/nameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
@@ -23,7 +23,7 @@
             android:id="@+id/breedTB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Breed"
+            android:text="@string/breed"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/weightTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="weight"
+            android:text="@string/weight"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
             android:id="@+id/detailsTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="details"
+            android:text="@string/detailsDisp"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
@@ -47,7 +47,7 @@
             android:id="@+id/fromTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="From"
+            android:text="@string/from"
             android:textColor="#FFFFFF"
             android:textSize="18sp"/>
 
@@ -55,7 +55,7 @@
             android:id="@+id/toTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="To"
+            android:text="@string/to"
             android:textColor="#FFFFFF"
             android:textSize="18sp"/>
 

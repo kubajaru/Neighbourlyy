@@ -39,8 +39,8 @@
     <string name="toast">Provide all the information.</string>
     <string name="backButtonDescription">Back button</string>
     <string name="smsContent">Hello, %1$s my name is %2$s. I found you on Neighboutlyy and would like to help with your pet.</string>
-    <string name="invalidPostalCode">Invalid postal code. Use polish one, for example (00-000)</string>
-    <string name="coderFail">Unexpected error occured. Please relaunch your app.</string>
+    <string name="invalidPostalCode">Invalid postal code. Use polish one, for example (00–000)</string>
+    <string name="coderFail">Unexpected error occurred. Please relaunch your app.</string>
     <string name="addressCodingFailed">Address is incorrect. Please check it and try one more time.</string>
     <string name="sendingEmailFailed">Your email does not exist. Please check it and try again.</string>
     <string name="deleteBtn">Delete</string>
@@ -69,4 +69,7 @@
     <string name="detailsDisp">Details</string>
     <string name="_08_00">08:00</string>
     <string name="_15_00">15:00</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="weight_kg">Weight kg</string>
 </resources>

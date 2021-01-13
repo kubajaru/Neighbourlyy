@@ -10,8 +10,8 @@
         android:id="@+id/contact_backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/backButtonDescription"
         android:background="@null"
+        android:contentDescription="@string/backButtonDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -20,77 +20,77 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/backward_arrow" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="313dp"
+        android:layout_marginEnd="250dp"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="help_weightTV,help_breedTV,help_weightTV3,help_detailsTV,help_nameTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/help_detailsTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/details"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_detailsTV"
         app:layout_constraintEnd_toStartOf="@+id/help_detailsTV"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_weightTV" />
+        app:layout_constraintTop_toTopOf="@+id/help_detailsTV" />
 
     <TextView
         android:id="@+id/help_weightTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/weightDisp"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_weightTV"
         app:layout_constraintEnd_toStartOf="@+id/help_weightTV"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_breedTV" />
+        app:layout_constraintTop_toTopOf="@+id/help_weightTV" />
 
     <TextView
         android:id="@+id/help_breedTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/breedDisp"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_breedTV"
         app:layout_constraintEnd_toStartOf="@+id/help_breedTV"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_nameTV" />
+        app:layout_constraintTop_toTopOf="@+id/help_breedTV" />
 
     <TextView
         android:id="@+id/help_nameTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/nameDisp"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_nameTV"
         app:layout_constraintEnd_toStartOf="@+id/help_nameTV"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/help_nameTV" />
 
     <TextView
         android:id="@+id/headerTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:fontFamily="cursive"
         android:text="@string/neighbourlyy"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/help_nameTV"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.202" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -109,62 +109,72 @@
         android:id="@+id/help_nameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/name"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/help_breedTV"
+        app:layout_constraintStart_toStartOf="@+id/help_weightTV" />
 
     <TextView
         android:id="@+id/help_breedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/breed"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/help_weightTV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_nameTV" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/help_weightTV" />
 
     <TextView
         android:id="@+id/help_weightTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/weight"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_breedTV" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/help_weightTV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kg"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_weightTV"
+        app:layout_constraintStart_toEndOf="@+id/help_weightTV"
+        app:layout_constraintTop_toTopOf="@+id/help_weightTV"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/help_detailsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:text="@string/detailsDisp"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/help_weightTV"
         app:layout_constraintTop_toBottomOf="@+id/help_weightTV" />
 
     <Button
         android:id="@+id/helpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="@string/helpBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_detailsTV" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.815" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

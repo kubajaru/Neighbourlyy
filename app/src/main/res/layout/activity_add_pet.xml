@@ -101,15 +101,15 @@
 
     <EditText
         android:id="@+id/addPet_weightTV"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/weight"
+        android:hint="@string/weight_kg"
         android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
