@@ -43,6 +43,18 @@ public class CustomAdapter extends ArrayAdapter<Pet> {
 
         TextView to = listItem.findViewById(R.id.toTV);
         to.setText("Available to: " + pet.get(position).to);
+
+        TextView from2 = listItem.findViewById(R.id.fromTV2);
+        from2.setText("Available from: " + pet.get(position).from2);
+
+        TextView to2 = listItem.findViewById(R.id.toTV2);
+        to2.setText("Available to: " + pet.get(position).to2);
+
+        TextView from3 = listItem.findViewById(R.id.fromTV3);
+        from3.setText("Available from: " + pet.get(position).from3);
+
+        TextView to3 = listItem.findViewById(R.id.toTV3);
+        to3.setText("Available to: " + pet.get(position).to3);
         return listItem;
     }
 
