@@ -31,6 +31,10 @@ public class AddPet extends AppCompatActivity {
     private ArrayList<String> names = new ArrayList<>();
     private EditText fromTV;
     private EditText toTV;
+    private EditText fromTV2;
+    private EditText toTV2;
+    private EditText fromTV3;
+    private EditText toTV3;
     private Date from;
 
     @Override
@@ -108,7 +112,19 @@ public class AddPet extends AppCompatActivity {
         fromTV = findViewById(R.id.addPet_fromTV);
         fromTV.setFocusable(false);
 
+        fromTV2 = findViewById(R.id.addPet_fromTV2);
+        fromTV2.setFocusable(false);
+
+        fromTV3 = findViewById(R.id.addPet_fromTV3);
+        fromTV3.setFocusable(false);
+
         toTV = findViewById(R.id.addPet_toTV);
+        toTV.setFocusable(false);
+
+        toTV2 = findViewById(R.id.addPet_toTV2);
+        toTV.setFocusable(false);
+
+        toTV3 = findViewById(R.id.addPet_toTV3);
         toTV.setFocusable(false);
 
         Button saveBtn = findViewById(R.id.addPet_saveBtn);
@@ -117,7 +133,9 @@ public class AddPet extends AppCompatActivity {
             public void onClick(View v) {
                 if (!petNameText.getText().toString().isEmpty() & !breedText.getText().toString().isEmpty() & !weightText.getText().toString().isEmpty() & !detailsText.getText().toString().isEmpty()) {
                     if (!names.contains(petNameText.getText().toString())) {
-                        if (timeOverlap(fromTV.getText().toString(), toTV.getText().toString())) {
+                        if (timeOverlap(fromTV.getText().toString(), toTV.getText().toString())
+                                || timeOverlap(fromTV2.getText().toString(), toTV2.getText().toString())
+                                || timeOverlap(fromTV3.getText().toString(), toTV3.getText().toString())) {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference myRef = database.getReference("pets");
                             HashMap<String, String> newPet = new HashMap<>();
@@ -127,6 +145,10 @@ public class AddPet extends AppCompatActivity {
                             newPet.put("details", detailsText.getText().toString());
                             newPet.put("from", fromTV.getText().toString());
                             newPet.put("to", toTV.getText().toString());
+                            newPet.put("from2", fromTV2.getText().toString());
+                            newPet.put("to2", toTV2.getText().toString());
+                            newPet.put("from3", fromTV3.getText().toString());
+                            newPet.put("to3", toTV3.getText().toString());
                             newPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
                             myRef.push().setValue(newPet);
                             Intent i = new Intent(AddPet.this, PetsList.class);
@@ -168,8 +190,28 @@ public class AddPet extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
+    public void showFromTimePicker2(View v) {
+        DialogFragment newFragment = new TimePickerFragment(fromTV2);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showFromTimePicker3(View v) {
+        DialogFragment newFragment = new TimePickerFragment(fromTV3);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
     public void showToTimePicker(View v) {
         DialogFragment newFragment = new TimePickerFragment(toTV);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showToTimePicker2(View v) {
+        DialogFragment newFragment = new TimePickerFragment(toTV2);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showToTimePicker3(View v) {
+        DialogFragment newFragment = new TimePickerFragment(toTV3);
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 

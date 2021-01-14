@@ -59,13 +59,13 @@
         android:hint="@string/important_details"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPet_setToBtn"
-        app:layout_constraintVertical_bias="0.035"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
 
     <EditText
         android:id="@+id/addPet_breedTV"
@@ -118,39 +118,108 @@
 
     <EditText
         android:id="@+id/addPet_fromTV"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="39dp"
         android:layout_marginTop="10dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/available_from"
+        android:hint="@string/from"
         android:inputType="none"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addPet_setFromBtn"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/addPet_fromTV2"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/from"
+        android:inputType="none"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <EditText
+        android:id="@+id/addPet_fromTV3"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/from"
+        android:inputType="none"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
+        app:layout_constraintVertical_bias="0.324" />
 
     <EditText
         android:id="@+id/addPet_toTV"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="39dp"
-        android:layout_marginTop="10dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/available_to"
+        android:hint="@string/to"
         android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addPet_setToBtn"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPet_fromTV"
-        app:layout_constraintVertical_bias="0.016"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575" />
+
+    <EditText
+        android:id="@+id/addPet_toTV2"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/to"
+        android:inputType="none"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <EditText
+        android:id="@+id/addPet_toTV3"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/to"
+        android:inputType="none"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713" />
 
     <ImageButton
         android:id="@+id/addPet_backBtn"
@@ -166,26 +235,82 @@
         app:layout_constraintVertical_bias="0.028"
         app:srcCompat="@drawable/backward_arrow" />
 
-    <Button
-        android:id="@+id/addPet_setFromBtn"
-        android:layout_width="83dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/setFrom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPet_weightTV"
-        android:onClick="showFromTimePicker"/>
-
-    <Button
+    <ImageButton
         android:id="@+id/addPet_setToBtn"
-        android:layout_width="83dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/setTo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showToTimePicker"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPet_setFromBtn"
-        android:onClick="showToTimePicker"/>
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.574"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/addPet_setToBtn2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showToTimePicker2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/addPet_setToBtn3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showToTimePicker3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/addPet_setFromBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showFromTimePicker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/addPet_setFromBtn2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showFromTimePicker2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645"
+        app:srcCompat="@drawable/time" />
+
+    <ImageButton
+        android:id="@+id/addPet_setFromBtn3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="showFromTimePicker3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713"
+        app:srcCompat="@drawable/time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
