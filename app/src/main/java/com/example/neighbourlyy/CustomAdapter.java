@@ -45,16 +45,32 @@ public class CustomAdapter extends ArrayAdapter<Pet> {
         to.setText("Available to: " + pet.get(position).to);
 
         TextView from2 = listItem.findViewById(R.id.fromTV2);
-        from2.setText("Available from: " + pet.get(position).from2);
+        if (!pet.get(position).from2.isEmpty()) {
+            from2.setText("Available from: " + pet.get(position).from2);
+        } else {
+            from2.setText("Available from: Not set");
+        }
 
         TextView to2 = listItem.findViewById(R.id.toTV2);
-        to2.setText("Available to: " + pet.get(position).to2);
+        if (!pet.get(position).to2.isEmpty()) {
+            to2.setText("Available to: " + pet.get(position).to2);
+        } else {
+            to2.setText("Available to: Not set");
+        }
 
         TextView from3 = listItem.findViewById(R.id.fromTV3);
-        from3.setText("Available from: " + pet.get(position).from3);
+        if (!pet.get(position).from3.isEmpty()) {
+            from3.setText("Available from: " + pet.get(position).from3);
+        } else {
+            from3.setText("Available from: Not set");
+        }
 
         TextView to3 = listItem.findViewById(R.id.toTV3);
-        to3.setText("Available to: " + pet.get(position).to3);
+        if (!pet.get(position).to3.isEmpty()) {
+            to3.setText("Available to: " + pet.get(position).to3);
+        } else {
+            to3.setText("Available to: Not set");
+        }
         return listItem;
     }
 
