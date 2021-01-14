@@ -33,6 +33,10 @@ public class UpdatePet extends AppCompatActivity {
     private String id;
     private EditText fromTV;
     private EditText toTV;
+    private EditText fromTV2;
+    private EditText toTV2;
+    private EditText fromTV3;
+    private EditText toTV3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,12 +131,30 @@ public class UpdatePet extends AppCompatActivity {
         toTV.setFocusable(false);
         toTV.setText(chosenPet.to);
 
+        fromTV2 = findViewById(R.id.updatePet_fromTV2);
+        fromTV2.setFocusable(false);
+        fromTV2.setText(chosenPet.from2);
+
+        toTV2 = findViewById(R.id.updatePet_toTV2);
+        toTV2.setFocusable(false);
+        toTV2.setText(chosenPet.to2);
+
+        fromTV3 = findViewById(R.id.updatePet_fromTV3);
+        fromTV3.setFocusable(false);
+        fromTV3.setText(chosenPet.from3);
+
+        toTV3 = findViewById(R.id.updatePet_toTV3);
+        toTV3.setFocusable(false);
+        toTV3.setText(chosenPet.to3);
+
         Button updateBtn = findViewById(R.id.updatePet_updateBtn);
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!nameTV.getText().toString().isEmpty() & !breedTV.getText().toString().isEmpty() & !weightTV.getText().toString().isEmpty() & !detailsTV.getText().toString().isEmpty()) {
-                    if (timeOverlap(fromTV.getText().toString() ,toTV.getText().toString())) {
+                    if (timeOverlap(fromTV.getText().toString() ,toTV.getText().toString())
+                            || timeOverlap(fromTV2.getText().toString(), toTV2.getText().toString())
+                            || timeOverlap(fromTV3.getText().toString(), toTV3.getText().toString())) {
                         HashMap<String, String> updatedPet = new HashMap<>();
                         updatedPet.put("name", nameTV.getText().toString());
                         updatedPet.put("breed", breedTV.getText().toString());
@@ -141,6 +163,10 @@ public class UpdatePet extends AppCompatActivity {
                         updatedPet.put("owner", FirebaseAuth.getInstance().getCurrentUser().getUid());
                         updatedPet.put("from", fromTV.getText().toString());
                         updatedPet.put("to",toTV.getText().toString());
+                        updatedPet.put("from2", fromTV2.getText().toString());
+                        updatedPet.put("to2", toTV2.getText().toString());
+                        updatedPet.put("from3", fromTV3.getText().toString());
+                        updatedPet.put("to3", toTV3.getText().toString());
                         HashMap<String, Object> childUpdates = new HashMap<>();
                         childUpdates.put("pets/" + id, updatedPet);
 
@@ -170,13 +196,33 @@ public class UpdatePet extends AppCompatActivity {
         });
     }
 
-    public void showFromTimePicker2 (View v){
+    public void showFromTimePicker (View v){
         DialogFragment newFragment = new AddPet.TimePickerFragment(fromTV);
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
-    public void showToTimePicker2 (View v){
+    public void showFromTimePicker2 (View v){
+        DialogFragment newFragment = new AddPet.TimePickerFragment(fromTV2);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showFromTimePicker3 (View v){
+        DialogFragment newFragment = new AddPet.TimePickerFragment(fromTV3);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showToTimePicker (View v){
         DialogFragment newFragment = new AddPet.TimePickerFragment(toTV);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showToTimePicker2 (View v){
+        DialogFragment newFragment = new AddPet.TimePickerFragment(toTV2);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void showToTimePicker3 (View v){
+        DialogFragment newFragment = new AddPet.TimePickerFragment(toTV3);
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
