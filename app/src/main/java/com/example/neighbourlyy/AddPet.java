@@ -105,6 +105,8 @@ public class AddPet extends AppCompatActivity {
             public void validate(TextView textView, String text) {
                 if (text.isEmpty()) {
                     textView.setError(getString(R.string.noEmptyField));
+                } else if (text.length() > 100) {
+                    textView.setError(getString(R.string.addPet_toLongDesc));
                 }
             }
         });

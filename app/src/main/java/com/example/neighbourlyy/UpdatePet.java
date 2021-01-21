@@ -89,6 +89,8 @@ public class UpdatePet extends AppCompatActivity {
             public void validate(TextView textView, String text) {
                 if (text.isEmpty()) {
                     textView.setError(getString(R.string.noEmptyString));
+                } else if (text.length() > 100) {
+                    textView.setError(getString(R.string.addPet_toLongDesc));
                 }
             }
         });
