@@ -7,8 +7,13 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -32,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +47,8 @@ public class Map extends AppCompatActivity {
     private ListView list;
     private FusedLocationProviderClient fusedLocationClient;
     private boolean permission;
-    private double Latitude;
-    private double Longitude;
+    private double latitude = 0.0;
+    private double longitude = 0.0;
 
 
     @Override
@@ -76,8 +82,8 @@ public class Map extends AppCompatActivity {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
                                 // Logic to handle location object
-                                Latitude = location.getLatitude();
-                                Longitude = location.getLongitude();
+                                //latitude = location.getLatitude();
+                                //longitude = location.getLongitude();
                             }
                         }
                     });
@@ -89,17 +95,59 @@ public class Map extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("pets");
+        //DatabaseReference myRef = database.getReference("pets");
+        DatabaseReference myRef = database.getReference();
         pets = new ArrayList<Pet>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 pets.clear();
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                for (DataSnapshot postSnapshot: snapshot.child("pets").getChildren()) {
                     Pet pet = postSnapshot.getValue(Pet.class);
                     if (!pet.owner.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         if (permission) {
                             pets.add(pet);
+                            User user = snapshot.child("users/" + pet.owner).getValue(User.class);
+                            String address = "" + user.street + ", " + user.postalCode + " " + user.city;
+
+                            //locationAddress.getAddressFromLocation(address, getApplicationContext(), new GeoCoderHandler());
+
+                            Thread fred = new Thread() {
+                                @Override
+                                public void run() {
+                                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                                    String result = null;
+                                    try {
+                                        List addressList = geocoder.getFromLocationName(address, 1);
+                                        if (addressList != null && addressList.size() > 0) {
+                                            Address address = (Address)addressList.get(0);
+                                            StringBuilder sb = new StringBuilder();
+                                            sb.append(address.getLatitude()).append(":");
+                                            sb.append(address.getLongitude());
+                                            result = sb.toString();
+                                        }
+                                    } catch (IOException e) {
+
+                                    } finally {
+                                        if (result != null) {
+
+                                            String token[] = result.split(":");
+                                            latitude = Double.parseDouble(token[0]);
+                                            longitude = Double.parseDouble(token[1]);
+                                        }
+                                    }
+                                }
+                            };
+                            fred.start();
+
+                            try {
+                                fred.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            System.out.println(longitude + ":" + latitude);
+
                         } else {
                             Toast.makeText(Map.this, "Random list", Toast.LENGTH_LONG).show();
                         }
@@ -152,6 +200,24 @@ public class Map extends AppCompatActivity {
                     Toast.makeText(Map.this, "Without this permission you will see whole database of pets without filtering.", Toast.LENGTH_LONG).show();
                 }
                 return;
+        }
+    }
+
+    public static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+        if ((lat1 == lat2) && (lon1 == lon2)) {
+            return 0;
+        } else {
+            double theta = lon1 - lon2;
+            double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
+            dist = Math.acos(dist);
+            dist = Math.toDegrees(dist);
+            dist = dist * 60 * 1.1515;
+            if (unit.equals("K")) {
+                dist = dist * 1.609344;
+            } else if (unit.equals("N")) {
+                dist = dist * 0.8684;
+            }
+            return (dist);
         }
     }
 }
