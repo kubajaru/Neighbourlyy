@@ -47,8 +47,12 @@ public class Map extends AppCompatActivity {
     private ListView list;
     private FusedLocationProviderClient fusedLocationClient;
     private boolean permission;
-    private double latitude = 0.0;
-    private double longitude = 0.0;
+    private double latitude = 51.887295;
+    private double longitude = 18.953794;
+    private double myLatitude = 0.0;
+    private double myLongitude = 0.0;
+
+    private static final String TAG = "MapActivity";
 
 
     @Override
@@ -82,8 +86,9 @@ public class Map extends AppCompatActivity {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
                                 // Logic to handle location object
-                                //latitude = location.getLatitude();
-                                //longitude = location.getLongitude();
+                                myLatitude = location.getLatitude();
+                                myLongitude = location.getLongitude();
+                                //System.out.println("Success");
                             }
                         }
                     });
@@ -92,7 +97,6 @@ public class Map extends AppCompatActivity {
             // The registered ActivityResultCallback gets the result of this request.
             requestPermissions( new String[] { Manifest.permission.ACCESS_FINE_LOCATION}, 666);
         }
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef = database.getReference("pets");
@@ -106,11 +110,8 @@ public class Map extends AppCompatActivity {
                     Pet pet = postSnapshot.getValue(Pet.class);
                     if (!pet.owner.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         if (permission) {
-                            pets.add(pet);
                             User user = snapshot.child("users/" + pet.owner).getValue(User.class);
                             String address = "" + user.street + ", " + user.postalCode + " " + user.city;
-
-                            //locationAddress.getAddressFromLocation(address, getApplicationContext(), new GeoCoderHandler());
 
                             Thread fred = new Thread() {
                                 @Override
@@ -127,7 +128,7 @@ public class Map extends AppCompatActivity {
                                             result = sb.toString();
                                         }
                                     } catch (IOException e) {
-
+                                        Log.e(TAG, "Geocoder not responding", e);
                                     } finally {
                                         if (result != null) {
 
@@ -146,7 +147,18 @@ public class Map extends AppCompatActivity {
                                 e.printStackTrace();
                             }
 
-                            System.out.println(longitude + ":" + latitude);
+                            //System.out.println(longitude + ":" + latitude);
+                            //System.out.println(" ");
+                            //System.out.println(myLongitude + ":" + myLatitude);
+                            //System.out.println(" ");
+
+                            double distanceInK = 0.1;//distance(latitude, longitude, myLatitude, myLongitude, "K");
+                            //System.out.println(distanceInK);
+
+                            if (distanceInK <= 0.5) {
+                                pets.add(pet);
+                            }
+
 
                         } else {
                             Toast.makeText(Map.this, "Random list", Toast.LENGTH_LONG).show();
